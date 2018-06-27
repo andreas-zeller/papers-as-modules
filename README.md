@@ -12,5 +12,6 @@ Many reasons are cited against making software available, mostly the fear and co
 
 In this paper, I will argue that papers can be organized _together with the software they describe_; even further, I will argue for an ecosystem in which papers can not only cite the work they build upon, but actually _use, reuse, and extend existing work_ in the same way software modules use, reuse, and extend each other.  And the good news is: Almost all ingredients for this do already exist.
 
-[Read the rest of the paper here](Papers as Modules.ipynb)
-[![Interact with it in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers%20as%20Modules.ipynb)
+* [Read the rest of the paper here](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers%20as%20Modules.ipynb)
+
+* [Interact with the paper in Binder here](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers%20as%20Modules.ipynb)
