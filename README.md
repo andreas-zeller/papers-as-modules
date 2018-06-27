@@ -1,5 +1,5 @@
 
-# Software Papers as Software Modules:<BR> Towards a Culture of Reusable Results
+# Software Papers as Software Modules:<BR> Towards a Culture of Reusable Results
 
 [Andreas Zeller](https://www.st.cs.uni-saarland.de/zeller/), CISPA / Saarland University
 
