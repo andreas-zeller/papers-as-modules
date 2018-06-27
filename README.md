@@ -93,7 +93,7 @@ ax.set_xlim(1, 9);
 ```
 
 
-![png](Papers-as-Modules_files/Papers-as-Modules_17_0.png)
+![png](papers-as-modules_files/papers-as-modules_17_0.png)
 
 
 The above plot is automatically integrated into my document; if I make any changes to the above definitions, it is automatically updated, too.  If I share my notebook with others (say, students), the recipients can toy with the implementation as they like.  This is made easier by the "literate programming" style in notebooks, which allows for a tight integration between text and code.  And did I mention that one can export notebooks into a multitude of formats, including PDF, HTML, slides, and Word?
