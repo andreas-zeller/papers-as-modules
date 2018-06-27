@@ -7,8 +7,12 @@
 
 Note: You can read this essay in multiple formats:
 
-* [As a HTML page](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.html)
+* [As a HTML page](http://htmlpreview.github.com?https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.html)
 
 * [As a rendered notebook (Desktop browsers only)](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.ipynb)
 
 * [As a Jupyter Notebook (editable; Desktop browsers only; experimental)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
+
+* [As source code on the Github project page](https://github.com/andreas-zeller/papers-as-modules/)
+
+For feedback, use the [Github issue tracker](https://github.com/andreas-zeller/papers-as-modules/issues).  Comments are welcome!
