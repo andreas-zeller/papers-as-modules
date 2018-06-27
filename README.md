@@ -1,6 +1,6 @@
 # Software Papers as Software Modules
 
-**: How citing a software paper could include importing its code**
+**How citing a software paper could include importing its code**
 
 Andreas Zeller, CISPA / Saarland University
 
