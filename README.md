@@ -7,11 +7,11 @@
 
 Note: You can read this essay in multiple formats:
 
-* [As text on the Github project page](https://github.com/andreas-zeller/papers-as-modules/)
+* [As text on the Github project page](https://github.com/andreas-zeller/papers-as-modules/README.md)
 
 * [As a rendered notebook (preferred; Desktop browsers only)](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.ipynb)
 
-* [Within the Jupyter Notebook environment (interactive and editable; beta)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
+* [In the Jupyter Notebook environment via binder (interactive and editable; beta)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
 
 [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
 
@@ -138,7 +138,7 @@ my_fuzzer(1000)
 
 
 
-    '7 8 *%?3-356/&6/&+1\'8!<0=.3=,(;/2<>?931!.7\'-+97?(=%\'!?:42>6=4&:--;7- 03)<4< "5?8" /\'\'39!,<50?6>(7+6,63>!;>,7>:46:"(>.&:,$,2%2$2%!40?$-"6/57(=)=9/*!>(?$+(!:"\'9#>53%.#1$,>%\'?9&"=8 7</13&3*?1$0709%;8;%6"#"% )78>?&!7(#!92/+?3.$\'43##6#/;;><2)""-/!"=+/.&":8*&&+=:/5\'."%.#<.&4?!=\'\'13;%4&.+)60+%:,71&=."0*?*!8<?#0(/>5 <<> 34>1!+1$856) 9$1,=0":$(4\'/ #/>*$1$-\'7<0&!)"">623$9.# 1;?):!/ ??7#&7:89/,*6%<"5>"%>87;=50;+(\'(.5??"=#*.2-;0-\'&$?>=1,)3</0%\'6 4481\'8->??,= 0\'%3:6(#*.+:$=;!&>=!%+9(1#5) &)2&/<0\'(-/-&##!863#>/1!<+*9&0.?,)):"962<26$7!2/+\'8+1(\':%>-:4"<4?0"&.9:0(7 /0+9;-(2(5\'!)#:!-\'#"5:;$>1$12== $-261&993"">\'9$$5!#((5>0! =+;(.!"\'>5%$8>385?+= 8&4+,:9,0195&2.-(!+\' :"(#,$3- .=?/ &&$ $.3/9!+6$,=,*)2$6-\'.7,2<10%75(:-!\'7 7&3/($;=,6+;\'5#\'%2%5-/5:6!0":?3#5?$?<=501125#<;*?;:+,=,"5,3:? 63$#2<.>):8>'
+    '827;<-&688-.*%:")"& /!9$%.*?$.!-?&,53.9%0///50$:4#2> *,,:3=3107;1*<(4,$"+05,<)%$::60#\'0  968?$#/??."/ 552)0*,<??)6$172,4*=*1\'2% =64"63\'+0'
 
 
 
@@ -173,7 +173,7 @@ fuzzer(100, 64)
 
 
 
-    'CSLHQUTRHIZ_R_S_XJGHBKOKEMM]@XRXY@BTCIA@C[Z]YC@CRUGKN[[DERZ@TVEKM['
+    'IYKQHJNRD@NK\\OPAVSAWEF^B\\QOSUGZCFPHGY[_ATUIGUOTIWX@_@Z_BZHAYRXFPNMTQHMEMQ_F[[]N[BRLH[OYV^_O_KP'
 
 
 
@@ -375,7 +375,7 @@ In the real paper by Miller, the evaluation would run the fuzzing function on a 
 
 ## Extending Classes
 
-As shown above, paper authors should anticipate ways their work could possibly be expanded, and take appropriate measures.  One of the easiest ways is to make use of _object-oriented programming_.  For instance, we can place all of our code into a single class, which would then allow for further customization.  For `fuzzer()`, this could look like this:
+As shown above, paper authors should anticipate ways their work could possibly be expanded, and take appropriate measures.  One of the easiest ways is to make use of _object-oriented programming_.  For instance, we can place all of our code into a single class, which would then allow for further customization.  For Miller's fuzzing, this could look like this:
 
 
 ```python
@@ -390,6 +390,24 @@ class Fuzzer:
         for i in range(0, string_length):
             out += chr(random.randrange(self.CHAR_START, self.CHAR_START + self.CHAR_RANGE))
         return out
+    
+    def evaluation(self, tries = 100):
+        """Evaluate `fuzz()` function `tries` times;
+           report average and max length"""
+
+        sum_length = 0
+        max_length = 0
+        for i in range(tries):
+            s = self.fuzz()
+            sum_length += len(s)
+            max_length = max(max_length, len(s))
+
+        avg_length = sum_length / tries
+        result = {
+            "average_length": avg_length,
+            "max_length": max_length
+        }
+        return result
 ```
 
 This `fuzz()` method works just like the `fuzzer()` function above:
@@ -423,90 +441,46 @@ m.fuzz()
 
 
 
-The interesting thing, though, is that anyone can now go and _extend_ the original class – for instance, to set different parameters:
+The interesting thing, though, is that anyone can now go and _extend_ the original class – for instance, to set different parameters, or override methods:
 
 
 ```python
-class MyFuzzer(Fuzzer):
+class PerlFuzzer(Fuzzer):
+    """Generate a semi-valid Perl program"""
     MAX_LENGTH = 1000
-
-m = MyFuzzer()
-m.fuzz()
+    
+    def fuzz(self):
+        return "#!/usr/bin/perl\n" + super().fuzz()
+    
+perlfuzzer = PerlFuzzer()
+print(perlfuzzer.fuzz())
 ```
 
+    #!/usr/bin/perl
+    46(3)&&=36"-/692495>-,809-=*<6:'?> 2%!%) =;%08-& 12!$#;276>41-'%(=:-%$:>4:86(1;99*)?<<>07&9*1+&.:? -98:/'(  '512)1:;%0$$67-49;)'85 )=>?72$;*6& $96*;?4';/>8 ,.:-.!3'?260++.:%#8#4/:3>8&?<'&4#.,&6)7)2!<%$4+=>-- 0/<54*="=7(&%3/3/54';,):"5',2?03-%5=*  =6(<%-.#.!4-3. !=6+/7-5>#6-0?6 !.+ .;*$*%&065<.1%<.'/"&/"6&' 5*:-.;92&<-521&<55'4=;2>)<!7?6#;?-0=912+&&*=4$%>?+8,/6/.=">*!"1'!,%"2!,8+5:0*:# !9-<(*9 4,$!5 8*: '1#2=;/?)6$ 7!<295%>8"?8&:,076)34=>9:<)*%=)&&,7'.&=204 &;3,)'2288!'8'6-7!62",/3))2:8*(><,$-=4+09<2)+8-*4789,.-9)%/<&=.:/'39;9 +=1(0
 
 
-
-    '46(3)&&=36"-/692495>-,809-=*<6:\'?> 2%!%) =;%08-& 12!$#;276>41-\'%(=:-%$:>4:86(1;99*)?<<>07&9*1+&.:? -98:/\'(  \'512)1:;%0$$67-49;)\'85 )=>?72$;*6& $96*;?4\';/>8 ,.:-.!3\'?260++.:%#8#4/:3>8&?<\'&4#.,&6)7)2!<%$4+=>-- 0/<54*="=7(&%3/3/54\';,):"5\',2?03-%5=*  =6(<%-.#.!4-3. !=6+/7-5>#6-0?6 !.+ .;*$*%&065<.1%<.\'/"&/"6&\' 5*:-.;92&<-521&<55\'4=;2>)<!7?6#;?-0=912+&&*=4$%>?+8,/6/.=">*!"1\'!,%"2!,8+5:0*:# !9-<(*9 4,$!5 8*: \'1#2=;/?)6$ 7!<295%>8"?8&:,076)34=>9:<)*%=)&&,7\'.&=204 &;3,)\'2288!\'8\'6-7!62",/3))2:8*(><,$-=4+09<2)+8-*4789,.-9)%/<&=.:/\'39;9 +=1(0'
-
-
-
-By defining and then calling `m.evaluation()`, I can even rerun the evaluation – but with my own fuzzer function, my own settings, and so on.  Papers thus become as extendable as classes, and extending one's work equates to subclassing it.
-
-To demonstrate this, let me add a `fuzz_with_logging()` method to my existing class (using [this handy `@extend_class` feature](https://gist.github.com/victorlei/5968685)) which can again be used by subclasses:
-
-
+By calling the inherited `evaluation()` method, I can even rerun the evaluation – but now using my own fuzzer function and my own settings:
 
 
 ```python
-def extend_class(cls):
-    return lambda f: (setattr(cls,f.__name__,f) or f)
+perlfuzzer.evaluation()
 ```
 
 
-```python
-@extend_class(MyFuzzer)
-def fuzz_with_logging(self):
-    print("MAX_LENGTH =", self.MAX_LENGTH)
-    print("CHAR_START =", self.CHAR_START)
-    print("CHAR_RANGE =", self.CHAR_RANGE)
-    s = self.fuzz()
-    return s
 
-m.MAX_LENGTH = 20
-m.fuzz_with_logging()
-```
 
-    MAX_LENGTH = 20
-    CHAR_START = 32
-    CHAR_RANGE = 32
+    {'average_length': 508.97, 'max_length': 1007}
 
 
 
+Papers thus become as _extendable as classes_, and extending one's work equates to subclassing it.  
 
-
-    ",'=*%?%:=!,,"
-
-
-
-When the next scientist comes along and wants to use my logging method, all she has to do is again subclass from my class, make changes as desired, and still use all defined class methods.
-
-
-```python
-class NextFuzzer(MyFuzzer):
-    MAX_LENGTH = 50
-    CHAR_START = 97
-    CHAR_RANGE = 2
-
-n = NextFuzzer()
-n.fuzz_with_logging()
-```
-
-    MAX_LENGTH = 50
-    CHAR_START = 97
-    CHAR_RANGE = 2
-
-
-
-
-
-    'abbbabbbabaa'
-
-
+(The only downside to this at this point is purely technical: Python requires you to define an entire class before you use it, which goes against the step-by-step style used in notebooks.  Fortunately, there [are ways to extend classes after their initial definition](https://gist.github.com/victorlei/5968685).)
 
 ## Remote Resources
 
-The Python import system is completely programmable, and it is perfectly possible to [set it up such that one can also import modules (notebooks) from remote servers](https://github.com/operatorequals/httpimport), so you could write something like `import smith2018a.arxiv.org` or `from dblp.org import johnson2018b`.
+The Python import system is completely programmable, and it is perfectly possible to [set it up such that one can also import modules (notebooks) from remote servers](https://github.com/operatorequals/httpimport), so you could write something like `import smith2018a.arXiv.org` or `from dblp.uni-trier.de import johnson2018b`.
 
 There are obvious security risks involved with importing remote code.  Hence, you would be well advised to check the authenticity of such modules (for instance, against a published fingerprint).  At this point, the most secure option is to _copy_ a notebook over to your system and to read its text and code before you trust it.  (When you cite a paper, you're expected to read it anyway, right?)
 
@@ -520,7 +494,7 @@ But then, nobody is asking you to take your _entire_ infrastructure and translat
 
 At least, there should be some core technique, some central algorithm that makes the main contribution of your work.  Just as with your papers, where you select which parts you want to focus upon, you'd go and present the _code that matters._  The remaining code can be factored out to external tools – or imported from other papers.  If your experiment runs on terabytes of data, and takes weeks to compute, consider focusing on a refined subset or intermediate results that you can use to illustrate your approach.
 
-Style-wise, notebooks do not offer the same sophistication as full-fledged text or code editors; but there is no reason this should not change.  Where they excel, though, is in the integration of code and writing, and this is where the future of scientific software papers lies.
+Style-wise, notebooks do not offer the same sophistication as full-fledged text or code editors; but there is no reason they could not evolve further.  Where they excel, though, is in the integration of code and writing, and this is where the future of scientific software papers lies.
 
 Switching from the current paper culture to a culture of papers and software will need several changes in all the ways we write, assess, and reuse scientific contributions.  But then, think of how the culture of reusing and extending existing software has led to a productivity explosion in software development.  Isn't there a chance we may be seeing the same for software research?
 
