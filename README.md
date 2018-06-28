@@ -7,7 +7,7 @@
 
 Note: You can read this essay in multiple formats:
 
-* [As text on the Github project page](https://github.com/andreas-zeller/papers-as-modules/README.md)
+* [As text on the Github project page](https://github.com/andreas-zeller/papers-as-modules/blob/master/README.md)
 
 * [As a rendered notebook (preferred; Desktop browsers only)](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.ipynb)
 
