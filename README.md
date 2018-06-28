@@ -9,9 +9,11 @@ Note: You can read this essay in multiple formats:
 
 * [As text on the Github project page](https://github.com/andreas-zeller/papers-as-modules/)
 
-* [As a rendered notebook (Desktop browsers only)](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.ipynb)
+* [As a rendered notebook (preferred; Desktop browsers only)](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.ipynb)
 
 * [Within the Jupyter Notebook environment (interactive and editable; beta)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
+
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
 
 For feedback and issues, use the [Github issue tracker](https://github.com/andreas-zeller/papers-as-modules/issues).  Comments are welcome!
 
@@ -136,7 +138,7 @@ my_fuzzer(1000)
 
 
 
-    '%<16702) -4(-,(=)84/!*$13>/075(,\'*73;2&8-2\',#.*2$."0, 2>0<1573*;9((!#$%7#$#,"=,?1//4!8.6% .#9\'1.<43>:# ;5&*2\'8>9?+#*7=#/;4$97#;;/"(&*+3<115)*.4\'3)$\'.4&&#\')<>,!2.&?+!*&9=5!?+5!0:3+.-<)=.5(.391,3!57*+*,3886\'./!4&.0!69%>8$.\'58\';3)#3.3 $?1$%)4/))74:1>)4)#-" %71?-.!(#,8:*.262>7) <:-=:390748->+)-*44&77185/,09>6>60.",":282% 0=:=%/2/.3&143#,""?3!?\':(;45::-;\'39/1!*"-<;(69;$<\'&"&2,=5;;$)6+\'#2!?&-;:66;$:-<3\'+6>>6$"(5%4?0-2 77&%3<+=.%..6\'08&+"(?,*2/"#9;40+7,,%-57"216=%##?6%*0*+&"&8356*6,1)!23&43&48!;= *811?&*08, <6>1=>"0.)+1&2#+7#%/2,+*339!&(,?:.%:, 3?7( +;%**\'#,06?!(4/$%,:7$?&3.(*,:4)\'5#/*=\'++&9\'6.9#14%0)&\'/89-.(,1#*2*5//$*?*/32$-;3."77$&92*5(-5738=!:(4)&)5:=%""&'
+    '7 8 *%?3-356/&6/&+1\'8!<0=.3=,(;/2<>?931!.7\'-+97?(=%\'!?:42>6=4&:--;7- 03)<4< "5?8" /\'\'39!,<50?6>(7+6,63>!;>,7>:46:"(>.&:,$,2%2$2%!40?$-"6/57(=)=9/*!>(?$+(!:"\'9#>53%.#1$,>%\'?9&"=8 7</13&3*?1$0709%;8;%6"#"% )78>?&!7(#!92/+?3.$\'43##6#/;;><2)""-/!"=+/.&":8*&&+=:/5\'."%.#<.&4?!=\'\'13;%4&.+)60+%:,71&=."0*?*!8<?#0(/>5 <<> 34>1!+1$856) 9$1,=0":$(4\'/ #/>*$1$-\'7<0&!)"">623$9.# 1;?):!/ ??7#&7:89/,*6%<"5>"%>87;=50;+(\'(.5??"=#*.2-;0-\'&$?>=1,)3</0%\'6 4481\'8->??,= 0\'%3:6(#*.+:$=;!&>=!%+9(1#5) &)2&/<0\'(-/-&##!863#>/1!<+*9&0.?,)):"962<26$7!2/+\'8+1(\':%>-:4"<4?0"&.9:0(7 /0+9;-(2(5\'!)#:!-\'#"5:;$>1$12== $-261&993"">\'9$$5!#((5>0! =+;(.!"\'>5%$8>385?+= 8&4+,:9,0195&2.-(!+\' :"(#,$3- .=?/ &&$ $.3/9!+6$,=,*)2$6-\'.7,2<10%75(:-!\'7 7&3/($;=,6+;\'5#\'%2%5-/5:6!0":?3#5?$?<=501125#<;*?;:+,=,"5,3:? 63$#2<.>):8>'
 
 
 
@@ -158,6 +160,9 @@ With this, I can now access any notebook in my path and import its definitions:
 from Miller1989 import fuzzer
 ```
 
+    importing Jupyter notebook from Miller1989.ipynb
+
+
 This would allow me to use the _exact same code_ as used by Miller et al. in their own paper, instead of having me recreate it:
 
 
@@ -168,7 +173,7 @@ fuzzer(100, 64)
 
 
 
-    'HVTXW^VZW]EEZRQKBK@NOH]MA\\GUPFJHRWPUALX[MWKKVDRBAETO[NM^HVEVIXDQK]MJE^SXVVM'
+    'CSLHQUTRHIZ_R_S_XJGHBKOKEMM]@XRXY@BTCIA@C[Z]YC@CRUGKN[[DERZ@TVEKM['
 
 
 
@@ -196,6 +201,9 @@ Let me import some other work, this time from myself.  [_Delta debugging_](https
 ```python
 from Zeller2002 import ddmin
 ```
+
+    importing Jupyter notebook from Zeller2002.ipynb
+
 
 To work with delta debugging, I first need a _test predicate_ which tells me whether the failure occurs or not.  Let me setup a simple predicate that fails under rather specific circumstances:
 
