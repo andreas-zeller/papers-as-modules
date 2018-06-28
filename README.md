@@ -3,25 +3,23 @@
 
 [Andreas Zeller](https://www.st.cs.uni-saarland.de/zeller/), CISPA / Saarland University
 
-**Abstract.** _The future of scientific papers lies in the tight integration of traditional text with program code that can reproduce results on demand.  In this essay, I demonstrate that this integration also enables new reuse mechanisms: In the future, we could import and extend code from other papers just as we cite and extend their ideas._
+**Abstract.** _The future of scientific papers lies in the tight integration of traditional text with program code that can reproduce results on demand.  In this essay, I demonstrate that this integration also enables new reuse mechanisms: In the future, we could import and extend code from other papers just as we cite and extend their ideas – "`from Miller1989 import fuzzer`"._
 
 Note: You can read this essay in multiple formats:
 
-* [As a HTML page](http://htmlpreview.github.com?https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.html)
+* [As text on the Github project page](https://github.com/andreas-zeller/papers-as-modules/)
 
 * [As a rendered notebook (Desktop browsers only)](https://github.com/andreas-zeller/papers-as-modules/blob/master/Papers-as-Modules.ipynb)
 
-* [Within the Jupyter Notebook environment (editable; Desktop browsers only; experimental)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
+* [Within the Jupyter Notebook environment (interactive and editable; beta)](https://mybinder.org/v2/gh/andreas-zeller/papers-as-modules.git/master?filepath=Papers-as-Modules.ipynb)
 
-* [As source code on the Github project page](https://github.com/andreas-zeller/papers-as-modules/)
-
-For feedback, use the [Github issue tracker](https://github.com/andreas-zeller/papers-as-modules/issues).  Comments are welcome!
+For feedback and issues, use the [Github issue tracker](https://github.com/andreas-zeller/papers-as-modules/issues).  Comments are welcome!
 
 ## The Reproducibility Problem
 
 The difficulty to reproduce, reuse, or extend scientific results has long been a common concern in scientific circles.  The problem is the more troubling as computer software is commonly used to evaluate or even embody research results - and while one may assume that computer software should be far easier to copy and extend, most scientific software is not in a shape that others could work with it.  Even in computer science, where the majority of all publications describe some software or algorithm, only a small minority of papers actually makes this software available to others.
 
-Many reasons are cited against making software available, mostly the fear and cost of having to support some huge infrastructure.  And yes, if you have implemented, say, a symbolic analysis for FORTRAN-77, you will end up with a huge mess of code that will be hard to maintain.  On the other hand, there will be a few key contributions your analysis will have made - the key contributions you would like to detail in your paper, possibly with pseudocode.  The question is: Aren't these key contributions worthwhile not only to be read, but also to be _used_ and _reused_?
+Many reasons are cited against making software available, mostly the fear and cost of having to support some huge infrastructure.  And yes, if you have implemented, say, a symbolic analysis for FORTRAN-77, you will end up with a huge mess of code that will be hard to maintain.  On the other hand, there will be a few key contributions your analysis will have made – the key contributions you would like to detail in your paper, possibly with pseudocode.  The question is: Aren't these key contributions worthwhile not only to be read, but also to be _used_ and _reused_?
 
 In this paper, I will argue that papers can be organized _together with the software they describe_; even further, I will argue for an ecosystem in which papers can not only cite the work they build upon, but actually _use, reuse, and extend existing work_ in the same way software modules use, reuse, and extend each other.  And the good news is: Almost all ingredients for this do already exist.
 
@@ -29,7 +27,7 @@ In this paper, I will argue that papers can be organized _together with the soft
 
 [_Jupyter Notebook_](http://jupyter.org) is a great tool to bring papers and code together.  A notebook document (or "notebook" for short) combines computer code (e.g. Python) and rich text elements (text, LaTeX math, figures, links) into a single document.  The included code can be executed at any time; its results (numbers, plots) are also included in the notebook.  Jupyter notebooks thus act as _executable papers_ in which analysis steps can be re-run at any time.
 
-What does a Jupyter Notebook look like? Well, this document itself is a notebook, so I can integrate executable Python code.  For instance, I can define a Fibonacci function:
+What does a Jupyter Notebook look like? Well, this essay itself is a notebook, so I can integrate executable Python code.  For instance, I can define a Fibonacci function:
 
 
 ```python
@@ -39,7 +37,7 @@ def fib(n):
     return fib(n - 2) + fib(n - 1)
 ```
 
-and then evaluate it right within my document, with the result getting integrated into my document immediately.  Anything you see prefixed by `Out[...]:` is computed by the notebook processor.
+and then evaluate it right within my document, with the result getting integrated into my document immediately.  Anything you see in a block after code (typically prefixed by `Out[...]:`) is computed by the notebook processor.
 
 
 ```python
@@ -112,7 +110,7 @@ However, not only can this integration be helpful for _individual papers_, it ca
 
 ## Papers as Modules
 
-As a thought experiment, let us assume some classic papsr would be available as a notebook - for instance, the 1989 paper ["An empirical study of the reliability of UNIX utilities"](https://dl.acm.org/citation.cfm?id=96279) by Bart Miller and his students.  This paper introduced the idea of "fuzzing" – that is, feeding random inputs into a program to see whether one can trigger a malfunction that way.  The key ingredient to this is a fuzzing function that produces such a random input.  Today, we could define it as follows:
+As a thought experiment, let us assume some classic paper would be available as a notebook - for instance, the 1989 paper ["An empirical study of the reliability of UNIX utilities"](https://dl.acm.org/citation.cfm?id=96279) by Bart Miller and his students.  This paper introduced the idea of "fuzzing" – that is, feeding random inputs into a program to see whether one can trigger a malfunction that way.  The key ingredient to this is a fuzzing function that produces such a random input.  Today, we could define it as follows:
 
 
 ```python
